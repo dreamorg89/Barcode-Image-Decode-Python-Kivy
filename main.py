@@ -1,30 +1,20 @@
 import sys
 import os
 
-import win32api
-import win32con
-import win32file
-import win32event
-import win32service
-import win32timezone
-import win32serviceutil
-
-
 import cv2
 from pyzbar.pyzbar import decode
 
 from kivy.app import App
-#from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-#from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 
 Builder.load_file("Test.kv")
+
 # Make one method to decode the barcode
-class SettingsScreen(GridLayout):
+class BarcodeScreen(GridLayout):
     def BarcodeReader(self):
         # read the image in numpy array using cv2
-        img = cv2.imread('images\\image.jpg')
+        img = cv2.imread('image.jpg')
 
         # Decode the barcode image
         detectedBarcodes = decode(img)
@@ -45,9 +35,9 @@ class SettingsScreen(GridLayout):
 
                 if barcode.data != "":
                     # Print the barcode data
-                    #print(barcode.data)
-                    #print(barcode.type)
-
+                    print(barcode.data)
+                    print(barcode.type)
+                    
                     self.ids.my_label.text = "Barcode Data:  "+str(barcode.data)
                     self.ids.my_label2.text = "Barcode Type: "+str(barcode.type)
 
@@ -55,7 +45,7 @@ class SettingsScreen(GridLayout):
 
 class Test(App):
     def build(self):
-        return SettingsScreen()
+        return BarcodeScreen()
 
 
 if __name__ == "__main__":
