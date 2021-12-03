@@ -16,7 +16,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\W2'],
+             pathex=['\\'],
              binaries=[],
              datas=[('Test.kv', '.')],
              hiddenimports=['pyzbar','cv2','decode','numpy','scipy'],
@@ -39,7 +39,7 @@ a.binaries += TOC([
 
 # A dependency of libzbar.dylib that PyInstaller does not detect
 MISSING_DYLIBS = (
-    Path('C:\Windows\System32'),
+    Path('C:\Python39\Lib\site-packages\pyzbar\DynLib.dll'),
 )
 a.binaries += TOC([
     (lib.name, str(lib.resolve()), 'BINARY') for lib in MISSING_DYLIBS
