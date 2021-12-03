@@ -1,4 +1,4 @@
-<SettingsScreen>
+<BarcodeScreen>
     id: settings
     name: 'settings'
     BoxLayout:
@@ -8,12 +8,9 @@
         Button:
             text: 'Capture code'
             size_hint_y: None
-            #size_hint: (0.5, 0.5)
-            #size_hint: None, None
             height: '80dp'
             on_press:
                 root.BarcodeReader()
-
         Label:
             id: my_label
             size: root.width, root.height
